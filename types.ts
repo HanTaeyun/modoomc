@@ -6,6 +6,7 @@ export interface Project {
   image: string;
   description: string;
   videoUrl?: string;
+  objectPosition?: string;
 }
 
 export interface MenuItem {

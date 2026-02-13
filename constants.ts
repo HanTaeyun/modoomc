@@ -5,7 +5,7 @@ export const PORTFOLIO_ITEMS: Project[] = [
     id: 1,
     title: "KOREA INDIE GAME SHOWCASE",
     category: "CONFERENCE",
-    year: "2023",
+    year: "2025",
     image: "https://i.ibb.co/21Ghh7mT/neowiz-conference.png",
     description: "코리아 인디게임 쇼케이스 진행",
     videoUrl: "https://youtu.be/_-vJndsYQos?si=qT1CMjjl4clB2ott"
@@ -15,7 +15,7 @@ export const PORTFOLIO_ITEMS: Project[] = [
     title: "BATTLEGROUNDS 8TH ANNIVERSARY",
     category: "CORPORATE",
     year: "2023",
-    image: "https://i.ibb.co/KcMPpdyL/quiz-show.jpg",
+    image: "https://i.ibb.co/s9PgnKPq/image.png",
     description: "배틀그라운드 8주년 이벤트 진행",
     videoUrl: "https://youtube.com/shorts/MtwGApSx4KI?si=GqqLj4dQW9d2l7At"
   },
@@ -25,7 +25,7 @@ export const PORTFOLIO_ITEMS: Project[] = [
     category: "EVENT",
     year: "2023",
     image: "https://i.ibb.co/wZbjzS8n/squid-game-guard.jpg",
-    description: "오징어게임 테마 운동회",
+    description: "롯데웰푸드 오징어게임 테마 운동회",
     videoUrl: "https://youtu.be/KQ9Lsw8NMXw?si=H5mUJZjir0RgkEvN"
   },
   {
@@ -35,7 +35,8 @@ export const PORTFOLIO_ITEMS: Project[] = [
     year: "2024",
     image: "https://i.ibb.co/SwDGz43G/songpa-festival.jpg",
     description: "송파 청년 축제 사회",
-    videoUrl: "https://youtu.be/KSO7aCW_Olw?si=OVXHDjZVhLdugcL0"
+    videoUrl: "https://youtu.be/KSO7aCW_Olw?si=OVXHDjZVhLdugcL0",
+    objectPosition: "center 25%"
   },
   {
     id: 5,
@@ -82,3 +83,5 @@ export const PROFILE_DATA = {
 export const LOGO_URL = "https://i.ibb.co/NgymVLHK/logo.png";
 export const KAKAOTALK_URL = "https://open.kakao.com/o/sTzGV4Jg";
 export const INSTAGRAM_URL = "https://www.instagram.com/modoomc";
+export const BLOG_URL = "https://blog.naver.com/modoomc"; // 추측성 URL, 필요시 수정
+export const YOUTUBE_URL = "https://www.youtube.com/@modoomc"; // 추측성 URL, 필요시 수정

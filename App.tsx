@@ -3,14 +3,14 @@ import Header from './components/Header';
 import MouseImageTrail from './components/MouseImageTrail';
 import Hero from './components/Hero';
 import Profile from './components/Profile';
-import Portfolio from './components/Portfolio';``
+import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 
 function App() {
   return (
-    <div className="bg-black min-h-screen text-white selection:bg-white selection:text-black">
+    <div className="bg-[#FFD600] min-h-screen text-black selection:bg-black selection:text-[#FFD600]">
       <CustomCursor />
       <Header />
       

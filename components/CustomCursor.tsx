@@ -28,7 +28,7 @@ const CustomCursor: React.FC = () => {
 
     return (
         <motion.div
-            className="fixed top-0 left-0 w-8 h-8 rounded-full border border-white mix-blend-difference pointer-events-none z-[9999]"
+            className="fixed top-0 left-0 w-8 h-8 rounded-full border border-black z-[9999] pointer-events-none"
             variants={variants}
             animate="default"
             transition={{
@@ -52,7 +52,7 @@ const CustomCursor: React.FC = () => {
                 }
             }}
         >
-            <div className="w-1 h-1 bg-white rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+            <div className="w-1 h-1 bg-black rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
         </motion.div>
     );
 };
