@@ -57,6 +57,18 @@ export const PORTFOLIO_ITEMS: Project[] = [
   }
 ];
 
+export const HERO_IMAGES = [
+  "https://i.ibb.co/HLKHVbDh/Kakao-Talk-20260204-102037749-10.jpg",
+  "https://i.ibb.co/N2sQ4FwT/Kakao-Talk-20260204-102037749-17.jpg",
+  "https://i.ibb.co/TxLXpv5w/Kakao-Talk-20260204-152743033-01.jpg",
+  "https://i.ibb.co/SwqKsZgt/Kakao-Talk-20260204-102037749-04.jpg",
+  "https://i.ibb.co/Qv2VVWWy/Kakao-Talk-20260204-102037749-08.jpg",
+  "https://i.ibb.co/ff4z5Ld/Kakao-Talk-20260204-102037749-07.jpg",
+  "https://i.ibb.co/wZbjzS8n/squid-game-guard.jpg",
+  "https://i.ibb.co/7dK1c9hf/sports-day-group.jpg",
+  "https://i.ibb.co/21Ghh7mT/neowiz-conference.png"
+];
+
 // 마우스 움직임에 따라 나타나는 트레일 이미지들
 export const IMAGES = [
     "https://i.ibb.co/6cQnhbw0/trail-2.png",

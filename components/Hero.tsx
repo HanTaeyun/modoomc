@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
+import { HERO_IMAGES } from '../constants';
 
 const Hero: React.FC = () => {
   const x = useMotionValue(0);
@@ -12,6 +13,8 @@ const Hero: React.FC = () => {
   // 회전 각도 계산 (마우스 위치에 따라)
   const rotateX = useTransform(mouseY, [-0.5, 0.5], ["15deg", "-15deg"]);
   const rotateY = useTransform(mouseX, [-0.5, 0.5], ["-15deg", "15deg"]);
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -30,10 +33,43 @@ const Hero: React.FC = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [x, y]);
 
+  // Slideshow Logic
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 5500); // 간격을 늘려서 여백 시간 확보 (애니메이션 3초 + 딜레이 1초 + 여유)
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative h-screen w-full flex flex-col justify-center items-center overflow-hidden z-10 px-4 perspective-1000">
+      
+      {/* Background Slideshow */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 bg-[#FFD600]"></div> {/* Base color */}
+        <AnimatePresence mode="wait">
+            <motion.div
+                key={currentImageIndex}
+                className="absolute inset-0 w-full h-full"
+                initial={{ opacity: 0, scale: 1.15 }}
+                animate={{ opacity: 0.65, scale: 1.05 }} // 선명도를 위해 투명도 상향 (0.3 -> 0.65)
+                exit={{ opacity: 0, scale: 1.2, transition: { duration: 0.5, ease: "easeIn" } }} // 사라질때 조금 더 빠르게
+                transition={{ duration: 3.5, ease: "easeOut", delay: 1.2 }} // 등장 딜레이(invisible term) 추가 및 천천히 움직임
+            >
+                <img 
+                    src={HERO_IMAGES[currentImageIndex]} 
+                    alt="Hero Background" 
+                    className="w-full h-full object-cover grayscale mix-blend-multiply"
+                />
+            </motion.div>
+        </AnimatePresence>
+        {/* Overlay to ensure text readability but lighter than before for visibility */}
+        <div className="absolute inset-0 bg-[#FFD600]/40 mix-blend-overlay"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FFD600] via-transparent to-[#FFD600] opacity-80"></div>
+      </div>
+
       <div 
-        className="text-center z-10"
+        className="text-center z-10 relative"
         style={{ perspective: "1000px" }}
       >
         <motion.h2 
@@ -76,7 +112,7 @@ const Hero: React.FC = () => {
         </motion.p>
       </div>
       
-      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-xs uppercase tracking-widest text-black animate-bounce font-bold">
+      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-xs uppercase tracking-widest text-black animate-bounce font-bold z-10">
         Scroll Down
       </div>
     </section>

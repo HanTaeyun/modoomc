@@ -11,7 +11,7 @@ const Contact: React.FC = () => {
 
     return (
         <section id="contact" className="relative w-full py-24 bg-[#FFD600] text-black z-20">
-             <div className="max-w-6xl mx-auto px-6">
+             <div className="max-w-7xl mx-auto px-6">
                 <div className="text-center mb-16">
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
@@ -26,9 +26,9 @@ const Contact: React.FC = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-12 bg-black text-white rounded-3xl shadow-2xl overflow-hidden">
-                    {/* Left Info Column */}
-                    <div className="lg:col-span-1 p-8 md:p-12 bg-zinc-900 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-zinc-800">
+                <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 lg:gap-12 bg-black text-white rounded-3xl shadow-2xl overflow-hidden">
+                    {/* Left Info Column (Increased width ratio to prevent text wrapping) */}
+                    <div className="lg:col-span-2 p-8 md:p-12 bg-zinc-900 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-zinc-800">
                         <div className="space-y-10">
                             <div>
                                 <h3 className="text-xl font-black mb-6 border-b border-gray-700 pb-2">연락처 정보</h3>
@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
                                         <div className="flex items-center gap-3 mb-1 text-gray-400 text-sm font-bold tracking-wider">
                                             <Mail className="w-4 h-4" /> 이메일
                                         </div>
-                                        <a href="mailto:modoomc@naver.com" className="text-xl md:text-2xl font-bold group-hover:text-[#FFD600] transition-colors break-all">
+                                        <a href="mailto:modoomc@naver.com" className="text-xl md:text-2xl font-bold group-hover:text-[#FFD600] transition-colors">
                                             modoomc@naver.com
                                         </a>
                                     </div>
@@ -76,7 +76,7 @@ const Contact: React.FC = () => {
                     </div>
 
                     {/* Right Form Column */}
-                    <div className="lg:col-span-2 p-8 md:p-12 bg-black">
+                    <div className="lg:col-span-3 p-8 md:p-12 bg-black">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>

@@ -38,7 +38,8 @@ const MouseImageTrail: React.FC<{ children: React.ReactNode, renderImageBuffer: 
             el.style.display = "block";
             el.style.left = `${x}px`;
             el.style.top = `${y}px`;
-            el.style.zIndex = imageIndex.current.toString();
+            // Hero 섹션(z-10)보다 높고 Header(z-50)보다 낮거나 비슷하게 설정하여 보이게 함
+            el.style.zIndex = (40 + (imageIndex.current % 10)).toString();
 
             const rotation = Math.random() * rotationRange * 2 - rotationRange; 
 
