@@ -28,7 +28,12 @@ const Hero: React.FC = () => {
       y.set(normalizedY);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    // 모바일에서는 움직임 효과를 굳이 추적하지 않아도 됨
+    const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+    if (isFinePointer) {
+        window.addEventListener("mousemove", handleMouseMove);
+    }
+    
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [x, y]);
 
@@ -41,7 +46,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative h-screen w-full flex flex-col justify-center items-center overflow-hidden z-10 px-4">
+    <section className="relative h-screen h-[100dvh] w-full flex flex-col justify-center items-center overflow-hidden z-10 px-4">
       
       {/* Background Slideshow */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -96,7 +101,7 @@ const Hero: React.FC = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[13vw] md:text-[10rem] lg:text-[12rem] font-black tracking-tighter text-white font-['Manrope'] leading-none mb-4 select-none"
+                className="text-[15vw] md:text-[10rem] lg:text-[12rem] font-black tracking-tighter text-white font-['Manrope'] leading-none mb-4 select-none"
                 style={{ 
                   textShadow: "0 10px 30px rgba(0,0,0,0.3)",
                   transform: "translateZ(50px)" 

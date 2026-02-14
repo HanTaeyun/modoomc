@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, Instagram, MessageCircle } from 'lucide-react';
-import { KAKAOTALK_URL, INSTAGRAM_URL } from '../constants';
+import { KAKAOTALK_URL, INSTAGRAM_URL, GOOGLE_FORM_ACTION_URL, GOOGLE_FORM_ENTRY_IDS } from '../constants';
 
 const Contact: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -16,6 +16,8 @@ const Contact: React.FC = () => {
         privacy: false
     });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
@@ -26,7 +28,7 @@ const Contact: React.FC = () => {
         setFormData(prev => ({ ...prev, [name]: checked }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
         if (!formData.privacy) {
@@ -34,25 +36,62 @@ const Contact: React.FC = () => {
             return;
         }
 
-        const subject = `[모두의MC 행사문의] ${formData.organization} - ${formData.eventName}`;
-        const body = `
-[행사 문의 내용]
+        // 구글 폼 설정이 안되어 있을 경우 경고
+        if (GOOGLE_FORM_ACTION_URL.includes("YOUR_GOOGLE_FORM")) {
+            alert("관리자 설정 필요: constants.ts 파일에서 GOOGLE_FORM_ACTION_URL을 설정해주세요.");
+            return;
+        }
 
-1. 단체명 : ${formData.organization}
-2. 담당자명 : ${formData.name}
-3. 행사명 : ${formData.eventName}
-4. 연락처 : ${formData.phone}
-5. 행사 날짜 : ${formData.date}
-6. 예상 인원 : ${formData.attendees}
-7. 예산 범위 : ${formData.budget}
+        setIsSubmitting(true);
 
-8. 요청사항 :
-${formData.request}
-        `.trim();
-
-        const mailtoLink = `mailto:modoomc@naver.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        const formBody = new FormData();
+        formBody.append(GOOGLE_FORM_ENTRY_IDS.ORGANIZATION, formData.organization);
+        formBody.append(GOOGLE_FORM_ENTRY_IDS.NAME, formData.name);
+        formBody.append(GOOGLE_FORM_ENTRY_IDS.EVENT_NAME, formData.eventName);
+        formBody.append(GOOGLE_FORM_ENTRY_IDS.PHONE, formData.phone);
         
-        window.location.href = mailtoLink;
+        // 날짜 필드 특별 처리 (구글 폼의 Date 타입 질문은 년/월/일로 쪼개서 보내야 함)
+        if (formData.date) {
+            const [year, month, day] = formData.date.split('-');
+            formBody.append(GOOGLE_FORM_ENTRY_IDS.DATE + '_year', year);
+            formBody.append(GOOGLE_FORM_ENTRY_IDS.DATE + '_month', month);
+            formBody.append(GOOGLE_FORM_ENTRY_IDS.DATE + '_day', day);
+        }
+
+        formBody.append(GOOGLE_FORM_ENTRY_IDS.ATTENDEES, formData.attendees);
+        formBody.append(GOOGLE_FORM_ENTRY_IDS.BUDGET, formData.budget);
+        formBody.append(GOOGLE_FORM_ENTRY_IDS.REQUEST, formData.request);
+
+        try {
+            // mode: 'no-cors'는 중요합니다. 구글 폼은 브라우저에서 직접 AJAX 요청을 공식 지원하지 않기 때문에
+            // 응답을 읽을 수는 없지만(opaque), 요청은 성공적으로 전송됩니다.
+            await fetch(GOOGLE_FORM_ACTION_URL, {
+                method: 'POST',
+                body: formBody,
+                mode: 'no-cors'
+            });
+
+            alert('문의가 성공적으로 접수되었습니다.\n빠른 시일 내에 연락드리겠습니다.');
+            
+            // 폼 초기화
+            setFormData({
+                organization: '',
+                name: '',
+                eventName: '',
+                phone: '',
+                date: '',
+                attendees: '',
+                budget: '',
+                request: '',
+                privacy: false
+            });
+
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('문의 접수 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -73,7 +112,7 @@ ${formData.request}
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 lg:gap-12 bg-black text-white rounded-3xl shadow-2xl overflow-hidden">
-                    {/* Left Info Column (Increased width ratio to prevent text wrapping) */}
+                    {/* Left Info Column */}
                     <div className="lg:col-span-2 p-8 md:p-12 bg-zinc-900 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-zinc-800">
                         <div className="space-y-10">
                             <div>
@@ -245,9 +284,10 @@ ${formData.request}
 
                             <button 
                                 type="submit"
-                                className="w-full bg-white text-black font-black py-4 hover:bg-[#F1B821] transition-colors uppercase tracking-widest rounded-lg text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200"
+                                disabled={isSubmitting}
+                                className="w-full bg-white text-black font-black py-4 hover:bg-[#F1B821] transition-colors uppercase tracking-widest rounded-lg text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                문의하기
+                                {isSubmitting ? '전송 중...' : '문의하기'}
                             </button>
                         </form>
                     </div>

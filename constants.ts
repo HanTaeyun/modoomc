@@ -97,3 +97,21 @@ export const KAKAOTALK_URL = "https://open.kakao.com/o/sTzGV4Jg";
 export const INSTAGRAM_URL = "https://www.instagram.com/modoomc";
 export const BLOG_URL = "https://blog.naver.com/modoomc"; 
 export const YOUTUBE_URL = "https://www.youtube.com/@%EA%B9%80%EB%8F%84%EC%9C%A4%EC%82%AC%ED%9A%8C%EC%9E%90";
+
+// ==============================================================================
+// [Google Form 설정]
+// ==============================================================================
+
+export const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSc5djWFhuOJHXXhoBCpvGM5Sq3yzHPUBZQ6hivY4AXSwBikCA/formResponse";
+
+// 제공해주신 Payload 스크린샷 기반 ID 매핑
+export const GOOGLE_FORM_ENTRY_IDS = {
+    ORGANIZATION: "entry.2017421541", // 단체명
+    NAME: "entry.1714727110",         // 담당자명
+    EVENT_NAME: "entry.540579836",   // 행사명
+    PHONE: "entry.1120720491",        // 연락처
+    DATE: "entry.65693739",         // 행사 날짜 (Payload에서 _year, _month, _day로 나뉘는 항목)
+    ATTENDEES: "entry.1818543463",    // 예상 인원
+    BUDGET: "entry.1672840274",       // 예산 범위
+    REQUEST: "entry.1358023897"       // 요청사항
+};

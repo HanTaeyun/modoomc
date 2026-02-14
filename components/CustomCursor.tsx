@@ -3,8 +3,17 @@ import { motion } from 'framer-motion';
 
 const CustomCursor: React.FC = () => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
+        // 마우스(fine pointer)가 있는 디바이스인지 확인
+        const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+        
+        // 터치 디바이스라면 커서 컴포넌트를 활성화하지 않음
+        if (!isFinePointer) return;
+
+        setIsVisible(true);
+
         const mouseMove = (e: MouseEvent) => {
             setMousePosition({
                 x: e.clientX,
@@ -18,6 +27,8 @@ const CustomCursor: React.FC = () => {
             window.removeEventListener("mousemove", mouseMove);
         };
     }, []);
+
+    if (!isVisible) return null;
 
     const variants = {
         default: {
