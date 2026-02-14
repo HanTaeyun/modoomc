@@ -9,9 +9,9 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ progress }) => {
     return (
         <motion.div 
             className="fixed inset-0 z-[9999] bg-[#111111] flex flex-col items-center justify-center text-[#F1B821]"
-            initial={{ y: 0 }}
+            initial={{ x: 0 }}
             exit={{ 
-                y: "-100%", 
+                x: "100%", 
                 transition: { 
                     duration: 0.8, 
                     ease: [0.76, 0, 0.24, 1] 
