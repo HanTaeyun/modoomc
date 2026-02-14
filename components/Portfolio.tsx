@@ -11,7 +11,7 @@ const Portfolio: React.FC = () => {
     };
 
     return (
-        <section id="work" className="relative w-full py-24 bg-[#FFD600] z-20">
+        <section id="work" className="relative w-full py-24 bg-[#F1B821] z-20">
             <div className="max-w-6xl mx-auto px-6">
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
@@ -56,7 +56,7 @@ const Portfolio: React.FC = () => {
                                 )}
 
                                 <div className="absolute top-6 right-6 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                                     <div className="w-12 h-12 bg-black text-[#FFD600] rounded-full flex items-center justify-center shadow-lg transform rotate-45 group-hover:rotate-0 transition-transform duration-500">
+                                     <div className="w-12 h-12 bg-black text-[#F1B821] rounded-full flex items-center justify-center shadow-lg transform rotate-45 group-hover:rotate-0 transition-transform duration-500">
                                         <ArrowUpRight className="w-6 h-6" />
                                      </div>
                                 </div>

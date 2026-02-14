@@ -8,7 +8,7 @@ interface LoadingScreenProps {
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ progress }) => {
     return (
         <motion.div 
-            className="fixed inset-0 z-[9999] bg-[#111111] flex flex-col items-center justify-center text-[#FFD600]"
+            className="fixed inset-0 z-[9999] bg-[#111111] flex flex-col items-center justify-center text-[#F1B821]"
             initial={{ y: 0 }}
             exit={{ 
                 y: "-100%", 
@@ -29,7 +29,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ progress }) => {
                 
                 <div className="w-64 h-1 bg-zinc-800 rounded-full overflow-hidden">
                     <motion.div 
-                        className="h-full bg-[#FFD600]"
+                        className="h-full bg-[#F1B821]"
                         initial={{ width: 0 }}
                         animate={{ width: `${progress}%` }}
                         transition={{ duration: 0.1 }}

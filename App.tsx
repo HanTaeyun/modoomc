@@ -71,7 +71,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-[#FFD600] min-h-screen text-black selection:bg-black selection:text-[#FFD600]">
+    <div className="bg-[#F1B821] min-h-screen text-black selection:bg-black selection:text-[#F1B821]">
       <CustomCursor />
       
       <AnimatePresence mode="wait">

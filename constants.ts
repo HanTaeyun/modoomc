@@ -83,7 +83,7 @@ export const PROFILE_DATA = {
     name: "KIM DOYUN",
     role: "FOUNDER & MAIN MC",
     profileImage: "https://i.ibb.co/1YQwf5Kx/profile-main.webp",
-    description: `모두의MC 대표 김도윤은 단순한 진행자가 아닙니다. \n공간의 공기를 바꾸고, 사람의 마음을 움직이는 스토리텔러입니다.\n수천 번의 무대 경험을 통해 다져진 노련함과 재치로\n당신의 소중한 순간을 완벽하게 디자인합니다.`,
+    description: `모두의MC 대표 김도윤은 단순한 진행자가 아닙니다. \n행사의 분위기를 바꾸고, 사람의 마음을 움직이는 스토리텔러입니다.\n수천 번의 무대 경험을 통해 다져진 노련함과 재치로\n당신의 소중한 순간을 완벽하게 디자인합니다.`,
     strength: [
         "신뢰감 있는 보이스와 정확한 딕션",
         "돌발 상황에 대처하는 탁월한 순발력",
@@ -95,5 +95,5 @@ export const PROFILE_DATA = {
 export const LOGO_URL = "https://i.ibb.co/NgymVLHK/logo.png";
 export const KAKAOTALK_URL = "https://open.kakao.com/o/sTzGV4Jg";
 export const INSTAGRAM_URL = "https://www.instagram.com/modoomc";
-export const BLOG_URL = "https://blog.naver.com/modoomc"; // 추측성 URL, 필요시 수정
-export const YOUTUBE_URL = "https://www.youtube.com/@modoomc"; // 추측성 URL, 필요시 수정
+export const BLOG_URL = "https://blog.naver.com/modoomc"; 
+export const YOUTUBE_URL = "https://www.youtube.com/@%EA%B9%80%EB%8F%84%EC%9C%A4%EC%82%AC%ED%9A%8C%EC%9E%90";

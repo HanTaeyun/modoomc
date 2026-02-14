@@ -4,7 +4,7 @@ import { PROFILE_DATA } from '../constants';
 
 const Profile: React.FC = () => {
   return (
-    <section id="about" className="relative w-full py-24 md:py-40 bg-[#FFD600] z-20">
+    <section id="about" className="relative w-full py-24 md:py-40 bg-[#F1B821] z-20">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         
         {/* Image Section */}

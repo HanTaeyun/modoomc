@@ -1,16 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, Instagram, MessageCircle, Calendar } from 'lucide-react';
+import { Phone, Mail, Instagram, MessageCircle } from 'lucide-react';
 import { KAKAOTALK_URL, INSTAGRAM_URL } from '../constants';
 
 const Contact: React.FC = () => {
+    const [formData, setFormData] = useState({
+        organization: '',
+        name: '',
+        eventName: '',
+        phone: '',
+        date: '',
+        attendees: '',
+        budget: '',
+        request: '',
+        privacy: false
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, checked } = e.target;
+        setFormData(prev => ({ ...prev, [name]: checked }));
+    };
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        alert('문의가 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.');
+        
+        if (!formData.privacy) {
+            alert('개인정보 수집 및 이용에 동의해주세요.');
+            return;
+        }
+
+        const subject = `[모두의MC 행사문의] ${formData.organization} - ${formData.eventName}`;
+        const body = `
+[행사 문의 내용]
+
+1. 단체명 : ${formData.organization}
+2. 담당자명 : ${formData.name}
+3. 행사명 : ${formData.eventName}
+4. 연락처 : ${formData.phone}
+5. 행사 날짜 : ${formData.date}
+6. 예상 인원 : ${formData.attendees}
+7. 예산 범위 : ${formData.budget}
+
+8. 요청사항 :
+${formData.request}
+        `.trim();
+
+        const mailtoLink = `mailto:modoomc@naver.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        window.location.href = mailtoLink;
     };
 
     return (
-        <section id="contact" className="relative w-full py-24 bg-[#FFD600] text-black z-20">
+        <section id="contact" className="relative w-full py-24 bg-[#F1B821] text-black z-20">
              <div className="max-w-7xl mx-auto px-6">
                 <div className="text-center mb-16">
                     <motion.h2 
@@ -37,7 +83,7 @@ const Contact: React.FC = () => {
                                         <div className="flex items-center gap-3 mb-1 text-gray-400 text-sm font-bold tracking-wider">
                                             <Phone className="w-4 h-4" /> 전화번호
                                         </div>
-                                        <a href="tel:010-8620-2939" className="text-xl md:text-2xl font-bold group-hover:text-[#FFD600] transition-colors">
+                                        <a href="tel:010-8620-2939" className="text-xl md:text-2xl font-bold group-hover:text-[#F1B821] transition-colors">
                                             010.8620.2939
                                         </a>
                                     </div>
@@ -45,7 +91,7 @@ const Contact: React.FC = () => {
                                         <div className="flex items-center gap-3 mb-1 text-gray-400 text-sm font-bold tracking-wider">
                                             <Mail className="w-4 h-4" /> 이메일
                                         </div>
-                                        <a href="mailto:modoomc@naver.com" className="text-xl md:text-2xl font-bold group-hover:text-[#FFD600] transition-colors">
+                                        <a href="mailto:modoomc@naver.com" className="text-xl md:text-2xl font-bold group-hover:text-[#F1B821] transition-colors">
                                             modoomc@naver.com
                                         </a>
                                     </div>
@@ -53,7 +99,7 @@ const Contact: React.FC = () => {
                                         <div className="flex items-center gap-3 mb-1 text-gray-400 text-sm font-bold tracking-wider">
                                             <Instagram className="w-4 h-4" /> 인스타그램
                                         </div>
-                                        <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-bold group-hover:text-[#FFD600] transition-colors">
+                                        <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-bold group-hover:text-[#F1B821] transition-colors">
                                             @modoomc
                                         </a>
                                     </div>
@@ -80,20 +126,26 @@ const Contact: React.FC = () => {
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label className="block text-sm text-[#FFD600] font-bold mb-2 font-['Noto_Sans_KR']">단체명 *</label>
+                                    <label className="block text-sm text-[#F1B821] font-bold mb-2 font-['Noto_Sans_KR']">단체명 *</label>
                                     <input 
                                         type="text" 
+                                        name="organization"
+                                        value={formData.organization}
+                                        onChange={handleChange}
                                         required 
-                                        className="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-3 focus:outline-none focus:border-[#FFD600] focus:ring-1 focus:ring-[#FFD600] text-white transition-all placeholder-gray-600"
+                                        className="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-3 focus:outline-none focus:border-[#F1B821] focus:ring-1 focus:ring-[#F1B821] text-white transition-all placeholder-gray-600"
                                         placeholder="단체명을 입력해주세요"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-[#FFD600] font-bold mb-2 font-['Noto_Sans_KR']">담당자명 *</label>
+                                    <label className="block text-sm text-[#F1B821] font-bold mb-2 font-['Noto_Sans_KR']">담당자명 *</label>
                                     <input 
                                         type="text" 
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
                                         required 
-                                        className="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-3 focus:outline-none focus:border-[#FFD600] focus:ring-1 focus:ring-[#FFD600] text-white transition-all placeholder-gray-600"
+                                        className="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-3 focus:outline-none focus:border-[#F1B821] focus:ring-1 focus:ring-[#F1B821] text-white transition-all placeholder-gray-600"
                                         placeholder="담당자명을 입력해주세요"
                                     />
                                 </div>
@@ -101,20 +153,26 @@ const Contact: React.FC = () => {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label className="block text-sm text-[#FFD600] font-bold mb-2 font-['Noto_Sans_KR']">행사명 *</label>
+                                    <label className="block text-sm text-[#F1B821] font-bold mb-2 font-['Noto_Sans_KR']">행사명 *</label>
                                     <input 
                                         type="text" 
+                                        name="eventName"
+                                        value={formData.eventName}
+                                        onChange={handleChange}
                                         required 
-                                        className="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-3 focus:outline-none focus:border-[#FFD600] focus:ring-1 focus:ring-[#FFD600] text-white transition-all placeholder-gray-600"
+                                        className="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-3 focus:outline-none focus:border-[#F1B821] focus:ring-1 focus:ring-[#F1B821] text-white transition-all placeholder-gray-600"
                                         placeholder="행사명을 입력해주세요"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-[#FFD600] font-bold mb-2 font-['Noto_Sans_KR']">연락처 *</label>
+                                    <label className="block text-sm text-[#F1B821] font-bold mb-2 font-['Noto_Sans_KR']">연락처 *</label>
                                     <input 
                                         type="tel" 
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
                                         required 
-                                        className="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-3 focus:outline-none focus:border-[#FFD600] focus:ring-1 focus:ring-[#FFD600] text-white transition-all placeholder-gray-600"
+                                        className="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-3 focus:outline-none focus:border-[#F1B821] focus:ring-1 focus:ring-[#F1B821] text-white transition-all placeholder-gray-600"
                                         placeholder="010-0000-0000"
                                     />
                                 </div>
@@ -126,7 +184,10 @@ const Contact: React.FC = () => {
                                     <div className="relative">
                                         <input 
                                             type="date" 
-                                            className="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-3 focus:outline-none focus:border-[#FFD600] focus:ring-1 focus:ring-[#FFD600] text-white transition-all placeholder-gray-600 [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert"
+                                            name="date"
+                                            value={formData.date}
+                                            onChange={handleChange}
+                                            className="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-3 focus:outline-none focus:border-[#F1B821] focus:ring-1 focus:ring-[#F1B821] text-white transition-all placeholder-gray-600 [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert"
                                         />
                                     </div>
                                 </div>
@@ -134,7 +195,10 @@ const Contact: React.FC = () => {
                                     <label className="block text-sm text-gray-400 font-bold mb-2 font-['Noto_Sans_KR']">예상 인원</label>
                                     <input 
                                         type="text" 
-                                        className="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-3 focus:outline-none focus:border-[#FFD600] focus:ring-1 focus:ring-[#FFD600] text-white transition-all placeholder-gray-600"
+                                        name="attendees"
+                                        value={formData.attendees}
+                                        onChange={handleChange}
+                                        className="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-3 focus:outline-none focus:border-[#F1B821] focus:ring-1 focus:ring-[#F1B821] text-white transition-all placeholder-gray-600"
                                         placeholder="예상 인원을 입력해주세요"
                                     />
                                 </div>
@@ -142,36 +206,46 @@ const Contact: React.FC = () => {
 
                             <div>
                                 <label className="block text-sm text-gray-400 font-bold mb-2 font-['Noto_Sans_KR']">예산 범위</label>
-                                <select className="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-3 focus:outline-none focus:border-[#FFD600] focus:ring-1 focus:ring-[#FFD600] text-white transition-all placeholder-gray-600 appearance-none">
-                                    <option value="" disabled selected>예산 범위를 선택해주세요</option>
-                                    <option value="under_100">100만원 미만</option>
-                                    <option value="100_300">100만원 ~ 300만원</option>
-                                    <option value="300_500">300만원 ~ 500만원</option>
-                                    <option value="500_1000">500만원 ~ 1000만원</option>
-                                    <option value="over_1000">1000만원 이상</option>
-                                    <option value="undecided">미정</option>
-                                </select>
+                                <input 
+                                    type="text"
+                                    name="budget"
+                                    value={formData.budget}
+                                    onChange={handleChange}
+                                    className="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-3 focus:outline-none focus:border-[#F1B821] focus:ring-1 focus:ring-[#F1B821] text-white transition-all placeholder-gray-600"
+                                    placeholder="예산 범위를 입력해주세요 (예: 300만원)" 
+                                />
                             </div>
 
                             <div>
                                 <label className="block text-sm text-gray-400 font-bold mb-2 font-['Noto_Sans_KR']">요청사항</label>
                                 <textarea 
                                     rows={4}
-                                    className="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-3 focus:outline-none focus:border-[#FFD600] focus:ring-1 focus:ring-[#FFD600] text-white transition-all resize-none placeholder-gray-600"
+                                    name="request"
+                                    value={formData.request}
+                                    onChange={handleChange}
+                                    className="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-3 focus:outline-none focus:border-[#F1B821] focus:ring-1 focus:ring-[#F1B821] text-white transition-all resize-none placeholder-gray-600"
                                     placeholder="행사 성격, 원하는 진행 스타일 등 구체적인 요청사항을 적어주세요"
                                 ></textarea>
                             </div>
 
                             <div className="flex items-center gap-3 py-2">
-                                <input type="checkbox" id="privacy" required className="w-5 h-5 accent-[#FFD600] cursor-pointer" />
+                                <input 
+                                    type="checkbox" 
+                                    id="privacy" 
+                                    name="privacy"
+                                    checked={formData.privacy}
+                                    onChange={handleCheckboxChange}
+                                    required 
+                                    className="w-5 h-5 accent-[#F1B821] cursor-pointer" 
+                                />
                                 <label htmlFor="privacy" className="text-sm text-gray-300 cursor-pointer select-none">
-                                    <span className="font-bold text-white">개인정보 수집 및 이용</span>에 동의합니다. <span className="text-[#FFD600]">*</span>
+                                    <span className="font-bold text-white">개인정보 수집 및 이용</span>에 동의합니다. <span className="text-[#F1B821]">*</span>
                                 </label>
                             </div>
 
                             <button 
                                 type="submit"
-                                className="w-full bg-white text-black font-black py-4 hover:bg-[#FFD600] transition-colors uppercase tracking-widest rounded-lg text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200"
+                                className="w-full bg-white text-black font-black py-4 hover:bg-[#F1B821] transition-colors uppercase tracking-widest rounded-lg text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200"
                             >
                                 문의하기
                             </button>

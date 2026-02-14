@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
       
       {/* Background Slideshow */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-[#FFD600]"></div> {/* Base color */}
+        <div className="absolute inset-0 bg-[#F1B821]"></div> {/* Base color */}
         <AnimatePresence mode="wait">
             <motion.div
                 key={currentImageIndex}
@@ -120,7 +120,7 @@ const Hero: React.FC = () => {
                 당신의 행사를 빛내줄 최고의 선택, 모두의MC입니다.
             </span>
             </p>
-            <div className="w-12 h-1 bg-[#FFD600] mx-auto mt-8 shadow-lg"></div>
+            <div className="w-12 h-1 bg-[#F1B821] mx-auto mt-8 shadow-lg"></div>
         </motion.div>
       </div>
       

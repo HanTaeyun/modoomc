@@ -60,7 +60,7 @@ const MouseImageTrail: React.FC<{ children: React.ReactNode, renderImageBuffer: 
     return (
         <div 
             ref={scope} 
-            className="relative w-full overflow-hidden bg-[#FFD600]"
+            className="relative w-full overflow-hidden bg-[#F1B821]"
             onMouseMove={handleMouseMove}
         >
             {IMAGES.map((img, index) => (
