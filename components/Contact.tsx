@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, Instagram, MessageCircle } from 'lucide-react';
-import { KAKAOTALK_URL, INSTAGRAM_URL, GOOGLE_FORM_ACTION_URL, GOOGLE_FORM_ENTRY_IDS } from '../constants';
+import { Phone, Mail, Instagram, MessageCircle, FileText } from 'lucide-react';
+import { KAKAOTALK_URL, INSTAGRAM_URL, BLOG_URL, GOOGLE_FORM_ACTION_URL, GOOGLE_FORM_ENTRY_IDS } from '../constants';
 
 const Contact: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -136,6 +136,14 @@ const Contact: React.FC = () => {
                                     </div>
                                     <div className="group">
                                         <div className="flex items-center gap-3 mb-1 text-gray-400 text-sm font-bold tracking-wider">
+                                            <FileText className="w-4 h-4" /> 블로그
+                                        </div>
+                                        <a href={BLOG_URL} target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-bold group-hover:text-[#F1B821] transition-colors">
+                                            blog.naver.com/modoomc
+                                        </a>
+                                    </div>
+                                    <div className="group">
+                                        <div className="flex items-center gap-3 mb-1 text-gray-400 text-sm font-bold tracking-wider">
                                             <Instagram className="w-4 h-4" /> 인스타그램
                                         </div>
                                         <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-bold group-hover:text-[#F1B821] transition-colors">
@@ -146,8 +154,15 @@ const Contact: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* 카카오톡 버튼 */}
-                        <div className="pt-8 mt-auto">
+                        {/* QR Code and KakaoTalk Button */}
+                        <div className="pt-8 mt-auto w-full">
+                            <div className="flex justify-end lg:justify-start mb-4">
+                                <img 
+                                    src="https://i.ibb.co/xqdt87mJ/212x-M.png" 
+                                    alt="KakaoTalk QR Code" 
+                                    className="w-32 h-auto rounded-lg"
+                                />
+                            </div>
                             <a 
                                 href={KAKAOTALK_URL} 
                                 target="_blank" 

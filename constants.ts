@@ -2,6 +2,25 @@ import { Project } from './types';
 
 export const PORTFOLIO_ITEMS: Project[] = [
   {
+    id: 3,
+    title: "SQUID GAME SPORTS DAY",
+    category: "EVENT",
+    year: "2025",
+    image: "https://i.ibb.co/wZbjzS8n/squid-game-guard.jpg",
+    description: "롯데웰푸드 오징어게임 테마 운동회",
+    videoUrl: "https://youtu.be/KQ9Lsw8NMXw?si=H5mUJZjir0RgkEvN",
+    objectPosition: "center 40%"
+  },
+  {
+    id: 5,
+    title: "BRITE ENERGY SPORTS DAY",
+    category: "SPORTS",
+    year: "2025",
+    image: "https://i.ibb.co/7dK1c9hf/sports-day-group.jpg",
+    description: "브라이트 에너지 파트너스 가을 운동회",
+    videoUrl: "https://www.youtube.com/watch?si=e2Lzyg77Ts86uYFg&v=dw_99Ju2lVU&feature=youtu.be"
+  },
+  {
     id: 1,
     title: "KOREA INDIE GAME SHOWCASE",
     category: "CONFERENCE",
@@ -14,19 +33,10 @@ export const PORTFOLIO_ITEMS: Project[] = [
     id: 2,
     title: "BATTLEGROUNDS 8TH ANNIVERSARY",
     category: "CORPORATE",
-    year: "2023",
+    year: "2024",
     image: "https://i.ibb.co/s9PgnKPq/image.png",
     description: "배틀그라운드 8주년 이벤트 진행",
     videoUrl: "https://youtube.com/shorts/MtwGApSx4KI?si=GqqLj4dQW9d2l7At"
-  },
-  {
-    id: 3,
-    title: "SQUID GAME SPORTS DAY",
-    category: "EVENT",
-    year: "2023",
-    image: "https://i.ibb.co/wZbjzS8n/squid-game-guard.jpg",
-    description: "롯데웰푸드 오징어게임 테마 운동회",
-    videoUrl: "https://youtu.be/KQ9Lsw8NMXw?si=H5mUJZjir0RgkEvN"
   },
   {
     id: 4,
@@ -37,15 +47,6 @@ export const PORTFOLIO_ITEMS: Project[] = [
     description: "송파 청년 축제 사회",
     videoUrl: "https://youtu.be/KSO7aCW_Olw?si=OVXHDjZVhLdugcL0",
     objectPosition: "center 25%"
-  },
-  {
-    id: 5,
-    title: "BRIGHT ENERGY SPORTS DAY",
-    category: "SPORTS",
-    year: "2023",
-    image: "https://i.ibb.co/7dK1c9hf/sports-day-group.jpg",
-    description: "브라이트 에너지 파트너스 가을 운동회",
-    videoUrl: "https://www.youtube.com/watch?si=e2Lzyg77Ts86uYFg&v=dw_99Ju2lVU&feature=youtu.be"
   },
   {
     id: 6,

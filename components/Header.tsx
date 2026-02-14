@@ -107,34 +107,34 @@ const Header: React.FC = () => {
                 href={BLOG_URL} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-4xl font-black font-['Manrope'] hover:text-white transition-colors"
+                className="text-4xl font-black font-['Noto_Sans_KR'] hover:text-white transition-colors"
               >
-                BLOG
+                블로그
               </a>
               <a 
                 href={INSTAGRAM_URL} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-4xl font-black font-['Manrope'] hover:text-white transition-colors"
+                className="text-4xl font-black font-['Noto_Sans_KR'] hover:text-white transition-colors"
               >
-                INSTAGRAM
+                인스타그램
               </a>
               <a 
                 href={YOUTUBE_URL} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-4xl font-black font-['Manrope'] hover:text-white transition-colors"
+                className="text-4xl font-black font-['Noto_Sans_KR'] hover:text-white transition-colors"
               >
-                YOUTUBE
+                유튜브
               </a>
               
               <div className="w-12 h-1 bg-black mx-auto my-4"></div>
 
               <button 
                 onClick={scrollToContact}
-                className="text-4xl font-black font-['Manrope'] hover:text-white transition-colors"
+                className="text-4xl font-black font-['Noto_Sans_KR'] hover:text-white transition-colors"
               >
-                CONTACT
+                문의하기
               </button>
             </nav>
           </motion.div>

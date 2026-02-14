@@ -21,7 +21,7 @@ const Portfolio: React.FC = () => {
                 >
                     <h2 className="text-5xl md:text-8xl font-black text-black font-['Manrope']">HISTORY</h2>
                     <span className="text-gray-800 font-bold font-['Manrope'] text-sm md:text-base mt-4 md:mt-0">
-                        SELECTED WORKS (2022-2024)
+                        SELECTED WORKS (2022-2025)
                     </span>
                 </motion.div>
 
