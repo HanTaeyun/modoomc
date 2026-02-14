@@ -28,32 +28,30 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ progress }) => {
                     남녀노소 모두가 좋아하는 모두의 MC
                 </motion.p>
                 
-                {/* 2. Main Title with Fill Effect */}
+                {/* 2. Main Title with Fill Effect (Left to Right) */}
                 <div className="relative mb-6 md:mb-8">
-                    {/* Background Text (Empty/Dimmed) */}
+                    {/* Background Text (Empty/Dimmed/Dark) */}
                     <h1 className="text-5xl md:text-8xl lg:text-9xl font-black font-['Manrope'] text-zinc-800 tracking-tighter whitespace-nowrap">
                         모두의 MC
                     </h1>
 
-                    {/* Foreground Text (Filled) - Masked by Height */}
-                    <motion.div 
-                        className="absolute bottom-0 left-0 w-full overflow-hidden flex items-end justify-center"
-                        style={{ height: `${progress}%` }}
+                    {/* Foreground Text (Filled) - Masked by Width */}
+                    <div 
+                        className="absolute top-0 left-0 h-full overflow-hidden whitespace-nowrap"
+                        style={{ width: `${progress}%` }}
                     >
                         <h1 className="text-5xl md:text-8xl lg:text-9xl font-black font-['Manrope'] text-[#F1B821] tracking-tighter whitespace-nowrap">
                             모두의 MC
                         </h1>
-                    </motion.div>
+                    </div>
                 </div>
                 
                 {/* 3. Percentage */}
-                <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                <div 
                     className="text-xl md:text-2xl font-bold font-['Manrope'] tabular-nums text-white"
                 >
                     {Math.round(progress)}%
-                </motion.div>
+                </div>
             </div>
         </motion.div>
     );
