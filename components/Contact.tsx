@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, Instagram, MessageCircle, FileText } from 'lucide-react';
 import { KAKAOTALK_URL, INSTAGRAM_URL, BLOG_URL, GOOGLE_FORM_ACTION_URL, GOOGLE_FORM_ENTRY_IDS } from '../constants';
+import { KAKAO_QR } from '../images';
 
 const Contact: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -158,7 +159,7 @@ const Contact: React.FC = () => {
                         <div className="pt-8 mt-auto w-full">
                             <div className="flex justify-end lg:justify-start mb-4">
                                 <img 
-                                    src="https://i.ibb.co/xqdt87mJ/212x-M.png" 
+                                    src={KAKAO_QR} 
                                     alt="KakaoTalk QR Code" 
                                     className="w-32 h-auto rounded-lg"
                                 />

@@ -1,4 +1,5 @@
 import { Project } from './types';
+import * as IMG from './images';
 
 export const PORTFOLIO_ITEMS: Project[] = [
   {
@@ -6,7 +7,7 @@ export const PORTFOLIO_ITEMS: Project[] = [
     title: "SQUID GAME SPORTS DAY",
     category: "EVENT",
     year: "2025",
-    image: "https://i.ibb.co/wZbjzS8n/squid-game-guard.jpg",
+    image: IMG.SQUID_GAME_GUARD,
     description: "롯데웰푸드 오징어게임 테마 운동회",
     videoUrl: "https://youtu.be/KQ9Lsw8NMXw?si=H5mUJZjir0RgkEvN",
     objectPosition: "center 40%"
@@ -16,7 +17,7 @@ export const PORTFOLIO_ITEMS: Project[] = [
     title: "BRITE ENERGY SPORTS DAY",
     category: "SPORTS",
     year: "2025",
-    image: "https://i.ibb.co/7dK1c9hf/sports-day-group.jpg",
+    image: IMG.SPORTS_DAY_GROUP,
     description: "브라이트 에너지 파트너스 가을 운동회",
     videoUrl: "https://www.youtube.com/watch?si=e2Lzyg77Ts86uYFg&v=dw_99Ju2lVU&feature=youtu.be"
   },
@@ -25,7 +26,7 @@ export const PORTFOLIO_ITEMS: Project[] = [
     title: "KOREA INDIE GAME SHOWCASE",
     category: "CONFERENCE",
     year: "2025",
-    image: "https://i.ibb.co/21Ghh7mT/neowiz-conference.png",
+    image: IMG.NEOWIZ_CONFERENCE,
     description: "코리아 인디게임 쇼케이스 진행",
     videoUrl: "https://youtu.be/_-vJndsYQos?si=qT1CMjjl4clB2ott"
   },
@@ -34,7 +35,7 @@ export const PORTFOLIO_ITEMS: Project[] = [
     title: "BATTLEGROUNDS 8TH ANNIVERSARY",
     category: "CORPORATE",
     year: "2024",
-    image: "https://i.ibb.co/s9PgnKPq/image.png",
+    image: IMG.BATTLEGROUNDS_8TH,
     description: "배틀그라운드 8주년 이벤트 진행",
     videoUrl: "https://youtube.com/shorts/MtwGApSx4KI?si=GqqLj4dQW9d2l7At"
   },
@@ -43,7 +44,7 @@ export const PORTFOLIO_ITEMS: Project[] = [
     title: "SONGPA YOUTH FESTIVAL",
     category: "FESTIVAL",
     year: "2024",
-    image: "https://i.ibb.co/SwDGz43G/songpa-festival.jpg",
+    image: IMG.SONGPA_FESTIVAL,
     description: "송파 청년 축제 사회",
     videoUrl: "https://youtu.be/KSO7aCW_Olw?si=OVXHDjZVhLdugcL0",
     objectPosition: "center 25%"
@@ -53,37 +54,37 @@ export const PORTFOLIO_ITEMS: Project[] = [
     title: "INFLATABLE THEME PARK",
     category: "OUTDOOR",
     year: "2023",
-    image: "https://i.ibb.co/dwt8GGjd/inflatable-castle.jpg",
+    image: IMG.INFLATABLE_CASTLE,
     description: "야외 대형 에어바운스 테마파크 진행"
   }
 ];
 
 export const HERO_IMAGES = [
-  "https://i.ibb.co/HLKHVbDh/Kakao-Talk-20260204-102037749-10.jpg",
-  "https://i.ibb.co/N2sQ4FwT/Kakao-Talk-20260204-102037749-17.jpg",
-  "https://i.ibb.co/TxLXpv5w/Kakao-Talk-20260204-152743033-01.jpg",
-  "https://i.ibb.co/SwqKsZgt/Kakao-Talk-20260204-102037749-04.jpg",
-  "https://i.ibb.co/Qv2VVWWy/Kakao-Talk-20260204-102037749-08.jpg",
-  "https://i.ibb.co/ff4z5Ld/Kakao-Talk-20260204-102037749-07.jpg",
-  "https://i.ibb.co/wZbjzS8n/squid-game-guard.jpg",
-  "https://i.ibb.co/7dK1c9hf/sports-day-group.jpg",
-  "https://i.ibb.co/21Ghh7mT/neowiz-conference.png"
+  IMG.HERO_1,
+  IMG.HERO_2,
+  IMG.HERO_3,
+  IMG.HERO_4,
+  IMG.HERO_5,
+  IMG.HERO_6,
+  IMG.SQUID_GAME_GUARD,
+  IMG.SPORTS_DAY_GROUP,
+  IMG.NEOWIZ_CONFERENCE
 ];
 
 // 마우스 움직임에 따라 나타나는 트레일 이미지들
 export const IMAGES = [
-    "https://i.ibb.co/6cQnhbw0/trail-2.png",
-    "https://i.ibb.co/DgwM8xkn/trail-3.png",
-    "https://i.ibb.co/PGBRmcJ4/trail-4.png",
-    "https://i.ibb.co/SXBwz3BV/trail-5.png",
-    "https://i.ibb.co/Tx89zkJc/trail-6.png",
-    "https://i.ibb.co/NgymVLHK/logo.png"
+    IMG.TRAIL_2,
+    IMG.TRAIL_3,
+    IMG.TRAIL_4,
+    IMG.TRAIL_5,
+    IMG.TRAIL_6,
+    IMG.LOGO
 ];
 
 export const PROFILE_DATA = {
     name: "KIM DOYUN",
     role: "FOUNDER & MAIN MC",
-    profileImage: "https://i.ibb.co/1YQwf5Kx/profile-main.webp",
+    profileImage: IMG.PROFILE_MAIN,
     description: `모두의MC 대표 김도윤은 단순한 진행자가 아닙니다. \n행사의 분위기를 바꾸고, 사람의 마음을 움직이는 스토리텔러입니다.\n수천 번의 무대 경험을 통해 다져진 노련함과 재치로\n당신의 소중한 순간을 완벽하게 디자인합니다.`,
     strength: [
         "신뢰감 있는 보이스와 정확한 딕션",
@@ -93,7 +94,7 @@ export const PROFILE_DATA = {
     ]
 }
 
-export const LOGO_URL = "https://i.ibb.co/NgymVLHK/logo.png";
+export const LOGO_URL = IMG.LOGO;
 export const KAKAOTALK_URL = "https://open.kakao.com/o/sTzGV4Jg";
 export const INSTAGRAM_URL = "https://www.instagram.com/modoomc";
 export const BLOG_URL = "https://blog.naver.com/modoomc"; 
